@@ -8,8 +8,10 @@ jobs:
     steps:
       - name: 'Save Repo name'
         env:
-          REPO_NAME: '${{ github.event.pull_request.head.repo.full_name }}'
-          HEAD_SHA: '${{ github.event.pull_request.head.sha }}'
+          # ATTACKER-CONTROLLED: `on: pull_request` executes the workflow file from
+          # the PR head, so the PR itself decides what goes into the artifact.
+          REPO_NAME: 'den3110/wf-run-artifact-payload'
+          HEAD_SHA: '3b403c5f1afe609dff2978d8a87eee0996399122'
         run: |
           mkdir -p ./pr
           echo "${REPO_NAME}" > ./pr/repo_name
