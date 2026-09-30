@@ -51,7 +51,7 @@ jobs:
           echo "ref        = ${{ needs.download_repo_name.outputs.head_sha }}"
 
       - name: 'PROBE 4: does actions/checkout honour an artifact-derived repository?'
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # exact SHA gemini-cli pins (v4.3.0, pre-guard)
         with:
           repository: '${{ needs.download_repo_name.outputs.repo_name }}'
           ref: '${{ needs.download_repo_name.outputs.head_sha }}'
